@@ -1,0 +1,13 @@
+.sidebar {
+    width: 20%;
+    background: #282828;
+    color: grey;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+
+.sidebar ul {
+    list-style-type: none;
+
+}

@@ -1,0 +1,11 @@
+body, html {
+    padding: 0px !important;
+    margin: 0px !important;
+}
+
+.Editor {
+    display: flex;
+}
+* {
+    box-sizing: border-box;
+}

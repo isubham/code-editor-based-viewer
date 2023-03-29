@@ -1,0 +1,49 @@
+.ContentArea {
+    width: 80%;
+}
+
+.OpenedFiles {
+    display: flex;
+    overflow-y: auto;
+    height: 5vh;
+}
+
+.OpenedFile  {
+    background-color: grey;
+    margin-left:1px;
+    padding: 0.4em;
+    display: flex;
+    border: 2px solid grey;
+}
+
+.active {
+}
+
+.crossIcon {
+    cursor: pointer;
+}
+
+.content-area div{
+    padding: 1em;;
+}
+
+.content-area .inactive{
+    display: none;
+}
+
+.content-area .active {
+    display: block;
+    height:95vh;
+}
+
+.EditorFiles {
+    display: flex;
+}
+.EditorFiles .file-panel{
+    width: 70%;
+}
+.EditorFiles .history-panel{
+    width: 30%;
+    padding: 1em;
+    background-color: lightgrey;
+}
