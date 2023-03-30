@@ -5,19 +5,25 @@
 .OpenedFiles {
     display: flex;
     overflow-y: auto;
-    height: 5vh;
+    min-height: 3.5vh;
 }
 
 .OpenedFile  {
-    background-color: grey;
-    margin-left:1px;
-    padding: 0.4em;
     display: flex;
-    border: 2px solid grey;
+    border: 1px solid black;
 }
 
-.active {
+.OpenedFile, .OpenedFile .inactive {
+    background-color: #333333;
+    color: grey;
 }
+
+.OpenedFile, .OpenedFile .active {
+    background-color: black;
+    color: grey;
+}
+
+
 
 .crossIcon {
     cursor: pointer;

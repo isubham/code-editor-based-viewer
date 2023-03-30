@@ -1,11 +1,13 @@
 
 const OpenedFile = ({file, titleCloseHandler, onTitleClick}) => {
     return (
-        <div className={`OpenedFile ${file.active ? 'active' : ''}`} >
-            <span onClick={() => onTitleClick(file)}>
-            {file.title}    
-            </span> 
-            <span className="crossIcon" onClick={() => titleCloseHandler(file)}>❌</span>
+        <div className="OpenedFile ">
+            <div className={`${file.active ? 'active' : 'inactive'}`} >
+                <span onClick={() => onTitleClick(file)}>
+                {file.title}    
+                </span> 
+                <span className="crossIcon" onClick={() => titleCloseHandler(file)}>❌</span>
+            </div>
         </div>
     )
 }

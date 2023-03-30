@@ -1,13 +1,46 @@
 .sidebar {
     width: 20%;
-    background: #282828;
-    color: grey;
+    background: #999999;
+    color: #222222;
     height: 100vh;
     overflow-y: auto;
 }
 
 
-.sidebar ul {
+.sidebar li {
     list-style-type: none;
+}
 
+.padding-left-sm {
+    padding-left: 1em;
+}
+
+.padding-left-md {
+    padding-left: 2em;
+}
+
+.Folder {
+    cursor: pointer;
+}
+.Folder .inactive {
+    /* background-color: inherit; */
+}
+.Folder .active {
+    /* background-color: #666666; */
+}
+
+.file.active {
+    background-color: aquamarine;
+}
+
+.file.inactive {
+    background-color: inherit;
+}
+
+.Folder-contents.active {
+    display: block;
+}
+
+.Folder-contents.inactive {
+    display: none;
 }

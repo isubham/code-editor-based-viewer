@@ -25,7 +25,7 @@ const EditorFiles = ({selectedItems, history}) => {
             </div>
             <div className='history-panel'>
                 <p>History</p>
-                {history.reverse().map(h => <div key={h.id}>{h.title} {h.id}</div>)}
+                {history.map(h => <div key={h.id}>{h.title} {h.id}</div>)}
             </div>
         </div>
     );
