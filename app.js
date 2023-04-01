@@ -1,6 +1,5 @@
-import { Sidebar } from "./sidebar";
 import { useState } from "react";
-import { ContentArea } from "./content-area";
+import { ContentArea, Sidebar } from "./components";
 
 const App = () => {
 
@@ -12,14 +11,16 @@ const App = () => {
             return counter;
         }
 
-        const file = (title) => ({ title: title, type: "pdf", content: "./content/resume.pdf", id: getID(), active: false });
+        const file = (title, type='pdf') => ({ title: title, type: type, content: "./content/resume.pdf", id: getID(), active: false });
         const folder = (title, files) => ({ title, type : "folder", content : files, id : getID()});
 
         const kdrama = folder("kdrama", [file('descendents of the sun'), file('startup')] );
         const anime = folder("anime", [file('death node'), file('naruto')] );
 
         const items = [anime, kdrama];
-        items.push(file('resume'));
+        items.push(file('resume', 'txt'));
+        items.push(file('nature', 'mp3'));
+
         items.push(file('resume'));
 
         return items;
@@ -70,7 +71,7 @@ const App = () => {
         }
     };
 
-    setHistoryOnClose = (file) => {
+    const setHistoryOnClose = (file) => {
         setHistory([...history.filter(e => e.id != file.id), file])
     }
 
@@ -98,10 +99,9 @@ const App = () => {
         setFolders(newFolders);
     };
 
-    return (<div className="Editor">
-        <Sidebar {...{ items: folders, itemClick: itemClickInSidebar, folderClick }} />
-        <ContentArea  {...{ selectedItems, setSelectedItems, titleCloseHandler, openedFileClick: itemClickInOpenedFiles, history }} />
-
+    return (<div className="Editor ">
+            <Sidebar {...{ items: folders, itemClick: itemClickInSidebar, folderClick }} />
+            <ContentArea  {...{ selectedItems, setSelectedItems, titleCloseHandler, openedFileClick: itemClickInOpenedFiles, history }} />
     </div>)
 };
 

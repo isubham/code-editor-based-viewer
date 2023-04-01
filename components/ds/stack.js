@@ -1,7 +1,7 @@
 class Stack {
     constructor(_items=[]) {
         this.items  = [];
-        _items.map(e => {
+        _items.foreach(e => {
             this.push(e);
         });
         return this;

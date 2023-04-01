@@ -30,3 +30,8 @@ build
 https://parceljs.org/features/production/
 
 
+Dependencies
+
+Font-awesome
+
+https://fontawesome.com/docs/web/use-with/react/

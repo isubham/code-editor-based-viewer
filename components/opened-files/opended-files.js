@@ -1,3 +1,5 @@
+import { faClose } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const OpenedFile = ({file, titleCloseHandler, onTitleClick}) => {
     return (
@@ -6,7 +8,9 @@ const OpenedFile = ({file, titleCloseHandler, onTitleClick}) => {
                 <span onClick={() => onTitleClick(file)}>
                 {file.title}    
                 </span> 
-                <span className="crossIcon" onClick={() => titleCloseHandler(file)}>❌</span>
+                <span className="crossIcon" onClick={() => titleCloseHandler(file)}>
+                    <FontAwesomeIcon icon={faClose} />
+                </span>
             </div>
         </div>
     )

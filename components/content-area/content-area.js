@@ -1,10 +1,10 @@
 import './content-area-style.css';
 
-import { OpenedFiles } from './opended-files';
+import { OpenedFiles } from '../opened-files/opended-files';
 
 const TextHandler = ({item}) => {
     return (
-        <div className='content-area'>
+        <div className='content-area '>
             <div className={`${item.active ? 'active': 'inactive'}` }>
                 <h1>{item.title}</h1>
                 <p>
@@ -33,7 +33,7 @@ const EditorFiles = ({selectedItems, history}) => {
 
 const ContentArea = ({selectedItems, setSelectedItems, titleCloseHandler, openedFileClick, history}) => {
     return (
-        <div className='ContentArea'>
+        <div className='ContentArea eight columns'>
             <OpenedFiles  {...{selectedItems, titleCloseHandler, setSelectedItems, openedFileClick }} />
             <EditorFiles { ...{selectedItems, history} }  />
             
