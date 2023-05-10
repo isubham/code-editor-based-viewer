@@ -11,7 +11,12 @@
 .OpenedFile  {
     display: flex;
     border: 1px solid black;
+    width: 200px;
 }
+.OpenedFile  video {
+    width: 500px;
+}
+
 
 .OpenedFile, .OpenedFile .inactive {
     background-color: #333333;

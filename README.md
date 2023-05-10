@@ -10,11 +10,12 @@
   - [x] txt viewer
   - [x] history
 
-- [ ] folder item 
+** v1.1 (29th march 2023 - 10 may 2023)
+- [x] folder item 
 - [ ] image
 - [ ] pdf 
-- [ ] video
-- [ ] audio
+- [x] video
+- [x] audio
 - [ ] page
 - [ ] handler
 - [ ] custom scroll bar

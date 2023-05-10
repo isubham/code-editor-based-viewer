@@ -10,9 +10,8 @@ export const Folder = ({item, itemClick, folderClick}) => {
                 <div className='Folder'>
                     <li className={`${item.active? 'active' : 'inactive'}`} onClick={() => folderClick(item)} 
                     type={item.type}>
-                        <big>
-                          <Icon type={`folder_${item.active ? 'open': 'close'}`} /> {item.title}
-                        </big></li>
+                          <Icon type={`folder_${item.active ? 'open': 'close'}`} /> {item.filename}
+                    </li>
                 </div>
 
                 {/* render contents inside folder */}

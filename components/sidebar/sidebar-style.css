@@ -21,6 +21,7 @@
 
 .Folder {
     cursor: pointer;
+    padding: 0.4em;
 }
 .Folder .inactive {
     /* background-color: inherit; */

@@ -1,6 +1,6 @@
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFile, faFileAudio, faFilePdf, faFileText, faFolderClosed, faFolderOpen } from '@fortawesome/free-regular-svg-icons';
+import { faFile, faFileAudio, faFilePdf, faFileText, faFileVideo, faFolderClosed, faFolderOpen } from '@fortawesome/free-regular-svg-icons';
 
 export const Icon = ({ type }) => {
     console.log(type);
@@ -12,6 +12,9 @@ export const Icon = ({ type }) => {
             return (<FontAwesomeIcon icon={faFileText} />);
         }
 
+        case 'video': {
+            return (<FontAwesomeIcon icon={faFileVideo} />);
+        }
         case 'mp3': {
             return (<FontAwesomeIcon icon={faFileAudio} />);
         }

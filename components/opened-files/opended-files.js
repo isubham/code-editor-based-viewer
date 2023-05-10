@@ -1,13 +1,15 @@
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const OpenedFile = ({file, titleCloseHandler, onTitleClick}) => {
+const OpenedFile = ({ file, titleCloseHandler, onTitleClick }) => {
     return (
         <div className="OpenedFile ">
             <div className={`${file.active ? 'active' : 'inactive'}`} >
                 <span onClick={() => onTitleClick(file)}>
-                {file.title}    
-                </span> 
+                    <marquee>
+                        {file.filename}
+                    </marquee>
+                </span>
                 <span className="crossIcon" onClick={() => titleCloseHandler(file)}>
                     <FontAwesomeIcon icon={faClose} />
                 </span>
@@ -16,11 +18,11 @@ const OpenedFile = ({file, titleCloseHandler, onTitleClick}) => {
     )
 }
 
-const OpenedFiles = ({selectedItems, titleCloseHandler, openedFileClick }) => {
+const OpenedFiles = ({ selectedItems, titleCloseHandler, openedFileClick }) => {
     return (
-    <div className="OpenedFiles" >
-        {selectedItems.map(file => <OpenedFile key={file.id} file={file} onTitleClick={openedFileClick} titleCloseHandler={titleCloseHandler} />)}
-    </div>
+        <div className="OpenedFiles" >
+            {selectedItems.map(file => <OpenedFile key={file.id} file={file} onTitleClick={openedFileClick} titleCloseHandler={titleCloseHandler} />)}
+        </div>
     );
 }
 
