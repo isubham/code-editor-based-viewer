@@ -1,31 +1,23 @@
 .ContentArea {
-    width: 80%;
+    background-color: #333333;
+    
 }
 
-.OpenedFiles {
-    display: flex;
-    overflow-y: auto;
-    min-height: 3.5vh;
+.OpenedFiles  {
+    background-color: #161616;
 }
 
-.OpenedFile  {
-    display: flex;
-    border: 1px solid black;
-    width: 200px;
+.OpenedFile {
+    background-color: #161616 ;
 }
-.OpenedFile  video {
-    width: 500px;
-}
-
 
 .OpenedFile, .OpenedFile .inactive {
-    background-color: #333333;
     color: grey;
 }
 
 .OpenedFile, .OpenedFile .active {
-    background-color: black;
-    color: grey;
+    background-color: #333333;
+    color: #6FCF97
 }
 
 

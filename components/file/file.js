@@ -1,5 +1,4 @@
 import { Icon } from "../icon/icon";
-import './file.css';
 
 export const File = ({ item, itemClick }) => {
     return (

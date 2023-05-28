@@ -1,0 +1,8 @@
+.File, .Folder {
+    padding: 0.4em;
+    text-overflow: ellipsis;
+    width: 100%;
+    background-color: #333333;
+    color: #6FCF97;
+    font-size: 1.1em;
+}

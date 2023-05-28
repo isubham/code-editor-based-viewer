@@ -1,7 +1,7 @@
 import './content-area-style.css';
 
 import { OpenedFiles } from '../opened-files/opended-files';
-import { ApiService } from '../../api.service';
+// import { ApiService } from '../../api.service';
 // import ShakaPlayer from 'shaka-player-react';
 // import 'shaka-player-react/dist/controls.css';
 
@@ -15,7 +15,7 @@ const AppSelector = ({ item }) => {
                 {/* <ShakaPlayer src={ApiService.getAnimeVideoLink(item)} */}
                 {/* autoPlay */}
                 {/* /> */}
-                <video src={ApiService.getAnimeVideoLink(item)} controls width="800px" />
+                {/* <video src={ApiService.getAnimeVideoLink(item)} controls width="800px" /> */}
             </div>
         )
     }
@@ -27,7 +27,7 @@ const AppSelector = ({ item }) => {
                 {/* <ShakaPlayer src={ApiService.getAnimeVideoLink(item)} */}
                 {/* autoPlay */}
                 {/* /> */}
-                <audio src={ApiService.getAnimeVideoLink(item)} controls />
+                {/* <audio src={ApiService.getAnimeVideoLink(item)} controls /> */}
             </div>
         )
     }
@@ -39,7 +39,7 @@ const AppSelector = ({ item }) => {
                 {/* <ShakaPlayer src={ApiService.getAnimeVideoLink(item)} */}
                 {/* autoPlay */}
                 {/* /> */}
-                <image src={ApiService.getAnimeVideoLink(item)} />
+                {/* <image src={ApiService.getAnimeVideoLink(item)} /> */}
             </div>
         )
     }
@@ -83,13 +83,27 @@ const EditorFiles = ({ selectedItems, history }) => {
 }
 
 const ContentArea = ({ selectedItems, setSelectedItems, titleCloseHandler, openedFileClick, history }) => {
-    return (
-        <div className='ContentArea eight columns'>
-            <OpenedFiles  {...{ selectedItems, titleCloseHandler, setSelectedItems, openedFileClick }} />
-            <EditorFiles {...{ selectedItems, history }} />
+    if (selectedItems.length > 0) {
 
-        </div>
-    );
+        return (
+            <div className='ContentArea col-md-10'>
+                {/* <div className="row"> */}
+
+                <OpenedFiles  {...{ selectedItems, titleCloseHandler, setSelectedItems, openedFileClick }} />
+                <EditorFiles {...{ selectedItems, history }} />
+
+                {/* </div> */}
+            </div>
+        );
+
+    }
+    else {
+        return (
+            <div className='ContentArea col-md-10'>
+                <h1 className='white-text'>Open files</h1>
+            </div>
+        )
+    }
 };
 
 export { ContentArea };

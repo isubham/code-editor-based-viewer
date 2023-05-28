@@ -1,41 +1,12 @@
 .sidebar {
-    width: 20%;
     background: #999999;
     color: #222222;
     height: 100vh;
     overflow-y: auto;
 }
 
-
-.sidebar li {
+ .sidebar li {
     list-style-type: none;
-}
-
-.padding-left-sm {
-    padding-left: 1em;
-}
-
-.padding-left-md {
-    padding-left: 2em;
-}
-
-.Folder {
-    cursor: pointer;
-    padding: 0.4em;
-}
-.Folder .inactive {
-    /* background-color: inherit; */
-}
-.Folder .active {
-    /* background-color: #666666; */
-}
-
-.file.active {
-    background-color: aquamarine;
-}
-
-.file.inactive {
-    background-color: inherit;
 }
 
 .Folder-contents.active {

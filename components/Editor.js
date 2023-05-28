@@ -1,30 +1,11 @@
-import { useState } from "react";
-import { ContentArea, Sidebar } from "./components";
+import { useEffect, useState } from "react";
+import { ContentArea } from "./content-area/content-area";
+import { Sidebar } from "./sidebar/sidebar";
+import { getData, brand } from "../data";
 
-const App = () => {
+const Editor = () => {
 
-    const getData = () => {
-
-        let counter = 0;
-        const getID = () => {
-            counter += 1;
-            return counter;
-        }
-
-        const file = (title, type='pdf') => ({ title: title, type: type, content: "./content/resume.pdf", id: getID(), active: false });
-        const folder = (title, files) => ({ title, type : "folder", content : files, id : getID()});
-
-        const kdrama = folder("kdrama", [file('descendents of the sun'), file('startup')] );
-        const anime = folder("anime", [file('death node'), file('naruto')] );
-
-        const items = [anime, kdrama];
-        items.push(file('resume', 'txt'));
-        items.push(file('nature', 'mp3'));
-
-        items.push(file('resume'));
-
-        return items;
-    }
+    const data = getData();
 
     const [folders, setFolders] = useState(getData());
     const [selectedItems, setSelectedItems] = useState([]);
@@ -93,16 +74,16 @@ const App = () => {
             if (e.id == folder.id) {
                 e.active = !e.active;
             }
-            
+
             return e;
         })
         setFolders(newFolders);
     };
 
-    return (<div className="Editor ">
-            <Sidebar {...{ items: folders, itemClick: itemClickInSidebar, folderClick }} />
-            <ContentArea  {...{ selectedItems, setSelectedItems, titleCloseHandler, openedFileClick: itemClickInOpenedFiles, history }} />
+    return (<div className="Editor container-flex">
+        <Sidebar  {...{ items: folders, itemClick: itemClickInSidebar, folderClick, brand }} />
+        <ContentArea  {...{ selectedItems, setSelectedItems, titleCloseHandler, openedFileClick: itemClickInOpenedFiles, history }} />
     </div>)
 };
 
-export { App };
+export { Editor };

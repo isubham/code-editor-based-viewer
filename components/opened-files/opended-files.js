@@ -3,14 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const OpenedFile = ({ file, titleCloseHandler, onTitleClick }) => {
     return (
-        <div className="OpenedFile ">
+        <div className="OpenedFile File col-md-2">
             <div className={`${file.active ? 'active' : 'inactive'}`} >
-                <span onClick={() => onTitleClick(file)}>
-                    <marquee>
-                        {file.filename}
-                    </marquee>
+                <span onClick={() => onTitleClick(file)} className="col-md-10">
+                    {file.filename}
                 </span>
-                <span className="crossIcon" onClick={() => titleCloseHandler(file)}>
+                <span className="crossIcon pull-right col-md-1" onClick={() => titleCloseHandler(file)}>
                     <FontAwesomeIcon icon={faClose} />
                 </span>
             </div>
@@ -20,7 +18,7 @@ const OpenedFile = ({ file, titleCloseHandler, onTitleClick }) => {
 
 const OpenedFiles = ({ selectedItems, titleCloseHandler, openedFileClick }) => {
     return (
-        <div className="OpenedFiles" >
+        <div className="OpenedFiles row" >
             {selectedItems.map(file => <OpenedFile key={file.id} file={file} onTitleClick={openedFileClick} titleCloseHandler={titleCloseHandler} />)}
         </div>
     );
