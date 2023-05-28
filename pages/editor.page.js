@@ -1,34 +1,27 @@
-import { useState } from "react";
-import { ContentArea, Sidebar } from "./components";
+import { useEffect, useState } from "react";
+import { ContentArea, Sidebar } from "../components";
+import { ApiService } from "../api.service.js";
 
 const App = () => {
 
-    const getData = () => {
-
-        let counter = 0;
-        const getID = () => {
-            counter += 1;
-            return counter;
-        }
-
-        const file = (title, type='pdf') => ({ title: title, type: type, content: "./content/resume.pdf", id: getID(), active: false });
-        const folder = (title, files) => ({ title, type : "folder", content : files, id : getID()});
-
-        const kdrama = folder("kdrama", [file('descendents of the sun'), file('startup')] );
-        const anime = folder("anime", [file('death node'), file('naruto')] );
-
-        const items = [anime, kdrama];
-        items.push(file('resume', 'txt'));
-        items.push(file('nature', 'mp3'));
-
-        items.push(file('resume'));
-
-        return items;
-    }
-
-    const [folders, setFolders] = useState(getData());
+    const [items, setItems] = useState([]);
+    const [folders, setFolders] = useState([]);
     const [selectedItems, setSelectedItems] = useState([]);
     const [history, setHistory] = useState([]);
+
+    useEffect(() => {
+        const getAnime = async () => {
+            const anime = await ApiService.getAnime()
+            setItems(anime);
+            setFolders(anime);
+        }
+        getAnime();
+    }, []);
+
+    if (items.length == 0) {
+        return (<div>loading...</div>);
+    }
+
 
     const setActive = (file, selectedItems) => {
         console.log('item clicked in openedfiles', file)
@@ -93,15 +86,15 @@ const App = () => {
             if (e.id == folder.id) {
                 e.active = !e.active;
             }
-            
+
             return e;
         })
         setFolders(newFolders);
     };
 
     return (<div className="Editor ">
-            <Sidebar {...{ items: folders, itemClick: itemClickInSidebar, folderClick }} />
-            <ContentArea  {...{ selectedItems, setSelectedItems, titleCloseHandler, openedFileClick: itemClickInOpenedFiles, history }} />
+        <Sidebar {...{ items: folders, itemClick: itemClickInSidebar, folderClick }} />
+        <ContentArea  {...{ selectedItems, setSelectedItems, titleCloseHandler, openedFileClick: itemClickInOpenedFiles, history }} />
     </div>)
 };
 
