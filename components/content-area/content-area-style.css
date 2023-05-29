@@ -1,6 +1,5 @@
 .ContentArea {
     background-color: #333333;
-    
 }
 
 .OpenedFiles  {
@@ -20,6 +19,13 @@
     color: #6FCF97
 }
 
+.primary-text {
+    color: #6FCF97;
+}
+
+.splash-message {
+    font-size: 2em;
+}
 
 
 .crossIcon {
@@ -49,4 +55,9 @@
     width: 30%;
     padding: 1em;
     background-color: lightgrey;
+}
+.centered-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

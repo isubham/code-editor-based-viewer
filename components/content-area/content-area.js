@@ -99,8 +99,8 @@ const ContentArea = ({ selectedItems, setSelectedItems, titleCloseHandler, opene
     }
     else {
         return (
-            <div className='ContentArea col-md-10'>
-                <h1 className='white-text'>Open files</h1>
+            <div className='ContentArea col-md-10 centered-text'>
+                <p className='primary-text splash-message'>Open files from Left</p>
             </div>
         )
     }

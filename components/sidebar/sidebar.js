@@ -4,7 +4,7 @@ import { Folder } from '../folder/folder';
 const Sidebar = ({ brand, items, itemClick, folderClick }) => {
     return (
         <div className="sidebar col-md-2">
-            <h4>
+            <h4 className='primary-text'>
                 {brand.title}
             </h4>
             <div className='Folders padding-left-md'>

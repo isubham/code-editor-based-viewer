@@ -1,9 +1,10 @@
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "./opened-file.css";
 
 const OpenedFile = ({ file, titleCloseHandler, onTitleClick }) => {
     return (
-        <div className="OpenedFile File col-md-2">
+        <div className={`OpenedFile File col-md-2 ${file.active ? 'highlight' : 'muted'}`}>
             <div className={`${file.active ? 'active' : 'inactive'}`} >
                 <span onClick={() => onTitleClick(file)} className="col-md-10">
                     {file.filename}
