@@ -48,14 +48,7 @@
 .EditorFiles {
     display: flex;
 }
-.EditorFiles .file-panel{
-    width: 70%;
-}
-.EditorFiles .history-panel{
-    width: 30%;
-    padding: 1em;
-    background-color: lightgrey;
-}
+
 .centered-text {
     display: flex;
     justify-content: center;

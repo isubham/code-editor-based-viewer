@@ -2,14 +2,16 @@
 import { File } from '../file/file';
 import { Icon } from '../icon/icon';
 import './folder.css';
+// folderClickInSidebar={folderClickInSidebar}
+export const Folder = ({ item, fileClickInSidebar, folderClickInSidebar }) => {
 
-export const Folder = ({ item, itemClick, folderClick }) => {
+
+    {/* folder */ }
     if (item.type == 'folder') {
         return (
             <div>
-                {/* folder */}
                 <div className='Folder'>
-                    <li className={`${item.active ? 'active' : 'inactive'}`} onClick={() => folderClick(item)}
+                    <li className={`${item.active ? 'active' : 'inactive'}`} onClick={() => folderClickInSidebar(item)}
                         type={item.type}>
                         {/* folder open and close icon */}
                         <Icon type={`folder_${item.active ? 'open' : 'close'}`} /> {item.filename}
@@ -20,13 +22,14 @@ export const Folder = ({ item, itemClick, folderClick }) => {
                 <div className={`Folder-contents padding-left-sm ${item.active ? 'active' : 'inactive'}`}>
                     {item.content.map(folderItem => {
                         return <Folder key={folderItem.id} item={folderItem}
-                            itemClick={itemClick} folderClick={folderClick} />
+                            fileClickInSidebar={fileClickInSidebar} folderClickInSidebar={folderClickInSidebar} />
                     })}
                 </div>
             </div>
         );
     }
+    // file
     else {
-        return <File key={item.id} item={item} itemClick={itemClick} />
+        return <File key={item.id} item={item} fileClickInSidebar={fileClickInSidebar} folderClickInSidebar={folderClickInSidebar} />
     }
 }

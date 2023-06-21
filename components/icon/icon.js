@@ -3,9 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFile, faFileAudio, faFilePdf, faFileText, faFileVideo, faFolderClosed, faFolderOpen } from '@fortawesome/free-regular-svg-icons';
 
 export const Icon = ({ type }) => {
-    console.log(type);
-    switch(type) {
-        case 'pdf': { 
+    switch (type) {
+        case 'pdf': {
             return (<FontAwesomeIcon icon={faFilePdf} />);
         }
         case 'txt': {
@@ -27,7 +26,7 @@ export const Icon = ({ type }) => {
             return (<FontAwesomeIcon icon={faFolderOpen} />);
         }
 
-        default: 
+        default:
             return (<FontAwesomeIcon icon={faFile} />)
     }
 }

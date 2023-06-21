@@ -4,10 +4,12 @@ import "./opened-file.css";
 
 const OpenedFile = ({ file, titleCloseHandler, onTitleClick }) => {
     return (
-        <div className={`OpenedFile File col-md-2 ${file.active ? 'highlight' : 'muted'}`}>
+        <div className={`OpenedFile File col-md-3 ${file.active ? 'highlight' : 'muted'}`}>
             <div className={`${file.active ? 'active' : 'inactive'}`} >
                 <span onClick={() => onTitleClick(file)} className="col-md-10">
-                    {file.filename}
+                    <small>
+                        {file.filename}
+                    </small>
                 </span>
                 <span className="crossIcon pull-right col-md-1" onClick={() => titleCloseHandler(file)}>
                     <FontAwesomeIcon icon={faClose} />

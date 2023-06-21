@@ -1,9 +1,10 @@
 import { Icon } from "../icon/icon";
 
-export const File = ({ item, itemClick }) => {
+// <File key={item.id} item={item} fileClickInSidebar={fileClickInSidebar} folderClickInSidebar={folderClickInSidebar} />
+export const File = ({ item, fileClickInSidebar }) => {
     return (
-        <div class="File">
-            <span onClick={() => itemClick(item)}
+        <div className="File">
+            <span onClick={() => fileClickInSidebar(item)}
                 className={`${item.active ? 'active' : 'inactive'}`}
                 type={item.type}>
                 <Icon type={item.type} /> {item.filename}</span>

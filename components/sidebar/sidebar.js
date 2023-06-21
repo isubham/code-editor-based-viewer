@@ -1,15 +1,21 @@
 import './sidebar-style.css';
 import { Folder } from '../folder/folder';
 
-const Sidebar = ({ brand, items, itemClick, folderClick }) => {
+// fileClickInSidear={fileClickInSidear} folderClickInSideBar={folderClickInSideBar}
+const Sidebar = ({ brand, folders, fileClickInSidebar, sidebarFolderClick }) => {
+
+    console.log(fileClickInSidebar, sidebarFolderClick);
+
     return (
         <div className="sidebar col-md-2">
             <h4 className='primary-text'>
                 {brand.title}
             </h4>
             <div className='Folders padding-left-md'>
-                {items.map(item => {
-                    return <Folder key={item.id} item={item} itemClick={itemClick} folderClick={folderClick} />
+                {folders.map(item => {
+                    return <Folder key={item.id} item={item}
+                        fileClickInSidebar={fileClickInSidebar}
+                        folderClickInSidebar={sidebarFolderClick} />
                 })}
             </div>
 
