@@ -4,7 +4,10 @@ const last = (arr) => {
   return arr[arr.length - 1];
 }
 
-const updateActiveFieldInSelectedItems = (file, selectedItems) => {
+/**
+ * will focus the document in opened pane
+ */
+const focusSelectedDoc = (file, selectedItems) => {
   console.log('item clicked in openedfiles', file)
   const updatedItems = selectedItems.map(e => {
     if (file.id == e.id) {
@@ -17,6 +20,18 @@ const updateActiveFieldInSelectedItems = (file, selectedItems) => {
   })
   return updatedItems;
 }
+
+const openDoc = (selectedItems, item) => {
+  const itemOpened = selectedItems.filter(i => item.id == i.id).length == 1;
+
+  // if not openeded open it
+  if (!itemOpened) {
+    // setHistoryOnClose(item)
+    return [...selectedItems, item];
+  }
+  return selectedItems;
+};
+
 
 /**
  * 
@@ -46,40 +61,33 @@ function folderReducer(state, action) {
 
     case "SIDEBAR_FILE_CLICK": {
 
-      const openInOpenedFiles = (selectedItems, item) => {
-        const itemOpened = selectedItems.filter(i => item.id == i.id).length == 1;
-
-        // if not openeded open it
-        if (!itemOpened) {
-          // setHistoryOnClose(item)
-          return [...selectedItems, item];
-        }
-        return selectedItems;
-      }
-
-
       const fileClickedInSidebar = action.file;
-      const items = openInOpenedFiles(state.selectedItems, fileClickedInSidebar)
-      const itemsWithActiveStatus = updateActiveFieldInSelectedItems(fileClickedInSidebar, items);
-      return { ...state, selectedItems: itemsWithActiveStatus }
+      const items = openDoc(state.selectedItems, fileClickedInSidebar)
+      const itemsWithActiveStatus = focusSelectedDoc(fileClickedInSidebar, items);
+
+      return { ...state, selectedItems: itemsWithActiveStatus, history: [...state.history, fileClickedInSidebar] }
 
     }
 
     case "OPENEND_FILES_FILE_CLOSE": {
+      const file = action.file;
+      console.log('closing item', file)
+      const historyWithoutItem = state.history.filter(e => e.id !== file.id);
 
-      console.log('closing item', item)
-      const selectedItemsWithoutClosedItem = state.selectedItems.filter(i => item.id != i.id)
-      const historyWithoutItem = state.history.filter(e => e.id !== item.id);
-      const selectedItemsWithActive = setActive(last(historyWithoutItem), selectedItemsWithoutClosedItem);
-      setSelectedItems(selectedItemsWithActive);
-      setHistory(historyWithoutItem);
+      const remainingDoc = state.selectedItems.filter(i => file.id != i.id);
+      const selectedItemsWithActive = focusSelectedDoc(
+        last(historyWithoutItem), remainingDoc);
+      return { ...state, selectedItems: selectedItemsWithActive, history: historyWithoutItem }
     }
 
     case "OPENED_FILES_FILE_CLICK": {
-      const itemsWithActive = updateActiveFieldInSelectedItems(action.file, state.selectedItems);
+      const file = action.file;
+      const itemsWithActive = focusSelectedDoc(action.file, state.selectedItems);
+
       // only set if current file is not last
-      if (last(history).id != file.id) {
-        return ({ ...state, folders: itemsWithActive, history: history.filter(e => e.id != file.id) })
+      const clickOutOfFocusDoc = last(state.history).id != file.id;
+      if (clickOutOfFocusDoc) {
+        return ({ ...state, folders: itemsWithActive, history: state.history.filter(e => e.id != file.id) })
       }
       else {
         return { ...state, selectedItems: itemsWithActive };

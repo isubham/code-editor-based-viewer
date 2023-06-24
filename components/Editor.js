@@ -30,11 +30,11 @@ const Editor = () => {
     };
 
     const titleCloseHandler = (file) => {
-        console.log('titleCloseHandler', file);
+        dispatchFolderEvent({ type: "OPENEND_FILES_FILE_CLOSE", file: file });
     }
 
     const openedFileClick = (file) => {
-        console.log("openedFileClick", file);
+        dispatchFolderEvent({ type: "OPENED_FILES_FILE_CLICK", file: file });
     }
 
     return (<div className="Editor container-flex">
