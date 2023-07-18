@@ -1,10 +1,3 @@
-import { createRoot } from "react-dom/client";
-import './style.css';
-import { App } from "./app";
-
-
-
-const container = document.querySelector('#react_root');
-const root = createRoot(container)
-
-root.render(<App />);
+export { Editor, ContentArea, Folder, File, OpenedFiles, Sidebar } from './components/index';
+export { file, folder } from './data/schema';
+export { getMockFolders, getMockBrand } from './data/index'

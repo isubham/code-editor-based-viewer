@@ -1,16 +1,17 @@
 import { useReducer } from "react";
 
-import { ContentArea } from "./content-area/content-area";
-import { Sidebar } from "./sidebar/sidebar";
-import { getData, brand } from "../data";
-import { folderReducer } from "../reducers/fileAndFolderReducer.js";
+import { ContentArea } from "../content-area/content-area";
+import { Sidebar } from "../sidebar/sidebar";
+import { folderReducer } from "../../reducers/fileAndFolderReducer.js";
 
 
-const Editor = () => {
+const Editor = ({ folders, brand }) => {
+
+    console.log({ folders });
 
     const [filesAndFolders, dispatchFolderEvent] = useReducer(folderReducer,
         {
-            folders: getData(),
+            folders,
             selectedItems: [],
             history: []
         });
